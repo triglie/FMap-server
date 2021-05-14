@@ -13,5 +13,10 @@ Frequency - StationName maps are stored in scraper/data/ directory:
 | Messina  | [Link to Messina csv](https://github.com/triglie/FMap-server/blob/main/scrapers/data/fm-station-map-messina.csv) |
 | Palermo  | [Link to Palermo csv](https://github.com/triglie/FMap-server/blob/main/scrapers/data/fm-station-map-palermo.csv) |
 
-Any other province outside of this three uses the csv of the nearest province. 
+> Any other province outside of this three uses the csv of the nearest province. 
 
+Frequency - PI - StationName map is stored in scraper/data/ directory: 
+
+| State    | URL                                                          |
+| -------- | ------------------------------------------------------------ |
+| Italia   | [Link to Catania csv](https://github.com/triglie/FMap-server/blob/main/scrapers/data/complete-pi-station-map.csv) |
