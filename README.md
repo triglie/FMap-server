@@ -19,4 +19,4 @@ Frequency - PI - StationName map is stored in scraper/data/ directory:
 
 | State    | URL                                                          |
 | -------- | ------------------------------------------------------------ |
-| Italia   | [Link to Catania csv](https://github.com/triglie/FMap-server/blob/main/scrapers/data/complete-pi-station-map.csv) |
+| Italia   | [Link to National FM map csv](https://github.com/triglie/FMap-server/blob/main/scrapers/data/complete-pi-station-map.csv) |
