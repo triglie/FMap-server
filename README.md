@@ -20,3 +20,10 @@ Frequency - PI - StationName map is stored in scraper/data/ directory:
 | State    | URL                                                          |
 | -------- | ------------------------------------------------------------ |
 | Italia   | [Link to National FM map csv](https://github.com/triglie/FMap-server/blob/main/scrapers/data/complete-pi-station-map.csv) |
+
+
+## Kafka UI 
+
+After starting kafka, go to http://localhost:8080/ to access the Kafka UI. 
+
+![kafka ui](./docs/assets/kafka-ui.png)
