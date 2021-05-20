@@ -3,6 +3,7 @@ services:
     zookeeper:
         image: confluentinc/cp-zookeeper:6.1.1
         container_name: zookeeper
+        hostname: zookeeper
         ports:
             - "2181:2181"
         environment:
@@ -15,7 +16,7 @@ services:
     kafkaserver:
         image: confluentinc/cp-kafka:6.1.1
         container_name: kafkaserver
-        hostname: kafkaServer
+        hostname: kafkaserver
         depends_on:
           - zookeeper
         ports:
@@ -48,14 +49,14 @@ services:
         networks: 
             - fmap-int
             - fmap-com 
-
+    
     webui:
         image: provectuslabs/kafka-ui:latest
         container_name: kafkaWebUI
         environment:
             KAFKA_CLUSTERS_0_NAME: my_cluster
             KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
-            KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafkaServer:9092
+            KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafkaserver:9092
         ports: 
             - 8080:8080
         depends_on: 
