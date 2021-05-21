@@ -50,12 +50,12 @@ public class WordCount {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.<String, String>stream("streams-plaintext-input")
+        builder.<String, String>stream("rds-signal")
                .flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split("\\W+")))
                .groupBy((key, value) -> value)
                .count(Materialized.<String, Long, KeyValueStore<Bytes, byte[]>>as("counts-store"))
                .toStream()
-               .to("streams-wordcount-output", Produced.with(Serdes.String(), Serdes.Long()));
+               .to("streams-output", Produced.with(Serdes.String(), Serdes.Long()));
 
         final Topology topology = builder.build();
         final KafkaStreams streams = new KafkaStreams(topology, props);
