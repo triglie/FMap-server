@@ -34,6 +34,17 @@ services:
             - fmap-com 
 
 
+    kafkastream:
+        build: 
+            context: data-enrichment
+        image: fmap.server:stream
+        container_name: kafkastream
+        depends_on: 
+            - kafkaserver
+        networks:
+            - fmap-int
+
+
     kafkaworker1:
         image: confluentinc/cp-kafka:6.1.1
         container_name: kafkaWorker1
@@ -65,7 +76,6 @@ services:
             - fmap-int
 
 networks:
-
     fmap-int:
         name: fmap-int
         driver: bridge
