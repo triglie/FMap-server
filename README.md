@@ -43,3 +43,23 @@ $ mvn package
 After starting kafka, go to http://localhost:8080/ to access the Kafka UI. 
 
 ![kafka ui](./docs/assets/kafka-ui.png)
+
+## Kafka-stream
+
+In order to use Kafka-stream, first of all, you have to build the Dockerfile in **FMap-server/data-enrichment/** using the following command:
+
+```shell
+$ docker build --tag=fmap.server:stream .
+```
+
+After that, you can run:
+
+```shell
+$ docker-compose up
+```
+
+If you want, you can use the following shortcut:
+
+```shell
+$ ./run.sh
+```
