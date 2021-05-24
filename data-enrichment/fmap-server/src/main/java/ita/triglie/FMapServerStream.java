@@ -21,11 +21,21 @@ public class FMapServerStream {
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
         final StreamsBuilder builder = new StreamsBuilder();
+        final MatcherFactory matcher = new MatcherFactory();
 
         builder.<String, String>stream("rds-signal")
             .map((k, v) -> {
                 JSONObject jsonObject = new JSONObject(v);
-                System.out.println(jsonObject.getString("FM"));
+                String province  = jsonObject.getString("province");
+                Float  frequence = Float.parseFloat(jsonObject.getString("FM"));
+                StationIdentifier sid = new StationIdentifier(frequence, province);
+                String stationName = null;
+                try {
+                    stationName = matcher.match(sid);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                System.out.println(stationName);
                 return new KeyValue<String, String>(k, v.toUpperCase());
             })
             .to("rds-signal-output");
@@ -42,7 +52,7 @@ public class FMapServerStream {
                 latch.countDown();
             }
         });
-        
+
         try {
             streams.start();
             latch.await();
